@@ -90,6 +90,8 @@ function saveRecipe(number) {
     }
 }
 
+$("#savedRecipesDumpHere").onload = $("#savedRecipesDumpHere").append("<p>" + (localStorage.getItem("savedRecipes")) + "</p>");
+
 $(document).ready(function() {
     console.log("Page ready");
   });
