@@ -28,16 +28,16 @@ function createRecipe() {
         }
         newDiv.append("<button id='result" + (i+1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>");
         }
-        queriedRecipe0 = (response.hits[0].recipe);
-        queriedRecipe1 = (response.hits[1].recipe);
-        queriedRecipe2 = (response.hits[2].recipe);
-        queriedRecipe3 = (response.hits[3].recipe);
-        queriedRecipe4 = (response.hits[4].recipe);
-        queriedRecipe5 = (response.hits[5].recipe);
-        queriedRecipe6 = (response.hits[6].recipe);
-        queriedRecipe7 = (response.hits[7].recipe);
-        queriedRecipe8 = (response.hits[8].recipe);
-        queriedRecipe9 = (response.hits[9].recipe);
+        queriedRecipe0 = (response.hits[0].recipe.uri);
+        queriedRecipe1 = (response.hits[1].recipe.uri);
+        queriedRecipe2 = (response.hits[2].recipe.uri);
+        queriedRecipe3 = (response.hits[3].recipe.uri);
+        queriedRecipe4 = (response.hits[4].recipe.uri);
+        queriedRecipe5 = (response.hits[5].recipe.uri);
+        queriedRecipe6 = (response.hits[6].recipe.uri);
+        queriedRecipe7 = (response.hits[7].recipe.uri);
+        queriedRecipe8 = (response.hits[8].recipe.uri);
+        queriedRecipe9 = (response.hits[9].recipe.uri);
     })
 }
 
@@ -90,7 +90,29 @@ function saveRecipe(number) {
     }
 }
 
-$("#savedRecipesDumpHere").onload = $("#savedRecipesDumpHere").append("<p>" + (localStorage.getItem("savedRecipes")) + "</p>");
+function recipeBookReveal() {
+    var savedRecipesString = localStorage.getItem("savedRecipes").split("http://www.edamam.com/ontologies/edamam.owl#recipe_");
+    for (i=1;i<savedRecipesString.length;i++) {
+        $.ajax({
+            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + savedRecipesString[i] + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+            $("#savedRecipesDumpHere").append("<p>" + response.label + "</p>")
+            .append("<p>" + response.label + "</p>")
+            .append("<p>" + response.image + "</p>")
+            .append("<p>" + response.url + "</p>");
+            for (j = 0; j < response.recipe.ingredients.length; j++) {
+                $('#savedRecipesDumpHere').append("<p>" + response.recipe.ingredients[j].text + "</p>")
+            }
+            $("#savedRecipesDumpHere").append("<button id='resultRecipeBook" + (i+1) + "' onclick='removeRecipe(" + (i) + ")'>Remove Recipe</button>")
+        })
+    }
+}
+
+function removeRecipe() {
+    //will put function here that removes recipe from Recipe Book and localStorage
+}
 
 $(document).ready(function() {
     console.log("Page ready");
