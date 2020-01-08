@@ -17,16 +17,23 @@ function createRecipe() {
         method: "GET"
     }).then(function (response) {
         for (i = 0; i < response.hits.length; i++) {
+            console.log(response);
             var newDiv = $("#recipeReveal");
-            newDiv.append("<div class='recipe" + (i) + "'></div>")
-                .append("<p>Recipe result " + (i + 1) + ": " + response.hits[i].recipe.label + "</p>")
-                .append("<img src=" + response.hits[i].recipe.image + " alt='Recipe picture'>")
-                .append("Full recipe: " + response.hits[i].recipe.url);
-            //This for loop iterates through the ingredients for this recipe
+            newDiv.append("<div class='card' style='width: 18rem;'>")
+            .append("<div class='card-body'>")
+            .append("<h5 class='" + response.hits[i].recipe.label + "'></h5>")
+            .append("<img src='" + response.hits[i].recipe.image + "' alt='Recipe Picture'></img>")
+            .append("<p class='card-text'>Full recipe instructions can be found at: <a href='" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.url + "</a></p>")
+            .append("</div>")
+            .append("<ul class='list-group list-group-flush'>");
             for (j = 0; j < response.hits[i].recipe.ingredients.length; j++) {
-                $('#recipeReveal').append("<p>" + response.hits[i].recipe.ingredients[j].text + "</p>")
+            newDiv.append("<li class='list-group-item'>" + response.hits[i].recipe.ingredients[j].text + "</li>");
             }
-            newDiv.append("<button id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>");
+            newDiv.append("</ul>")
+            .append("<div class='card-body'>")
+            .append("<button id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>")
+            .append("<a href='#'' class='card-link'>Another link</a>")
+            .append("</div></div>");
         }
         queriedRecipe0 = (response.hits[0].recipe.uri);
         queriedRecipe1 = (response.hits[1].recipe.uri);
@@ -108,13 +115,14 @@ function recipeBookReveal() {
             for (j = 0; j < response[0].ingredients.length; j++) {
                 $('#savedRecipesDumpHere').append("<p>" + response[0].ingredients[j].text + "</p>");
             }
-            $("#savedRecipesDumpHere").append("<button onclick='removeRecipe()'>Remove above recipe from Recipe Book</button>");
+            $("#savedRecipesDumpHere").append("<button class='removeButton'>Remove above recipe from Recipe Book</button>");
         })
     }
 }
 
 function removeRecipe() {
     console.log("This button doesn't work yet!");
+    
     // var tweakThis = localStorage.getItem("savedRecipes");
     // tweakThis.replace("http://www.edamam.com/ontologies/edamam.owl#recipe_" + address, '');
     // $("#savedRecipesDumpHere").empty();
