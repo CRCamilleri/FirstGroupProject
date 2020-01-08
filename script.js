@@ -102,13 +102,13 @@ function recipeBookReveal() {
             url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
             method: "GET"
         }).then(function (response) {
-            $("#savedRecipesDumpHere").append("<p>" + response[0].label + "</p>")
+            $(".card").append("<p>" + response[0].label + "</p>")
                 .append("<img src=" + response[0].image + " alt='Recipe picture'>")
                 .append("<p>" + response[0].url + "</p>");
             for (j = 0; j < response[0].ingredients.length; j++) {
-                $('#savedRecipesDumpHere').append("<p>" + response[0].ingredients[j].text + "</p>");
+                $('.card').append("<p>" + response[0].ingredients[j].text + "</p>");
             }
-            $("#savedRecipesDumpHere").append("<button onclick='removeRecipe()'>Remove above recipe from Recipe Book</button>");
+            $(".card").append("<button onclick='removeRecipe()'>Remove above recipe from Recipe Book</button>");
         })
     }
 }
