@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body onload="groceryListReveal()">
   <div class="container">
     <div class="row justify-content-lg-center">
 
@@ -40,43 +40,59 @@
         </div>
       </div>
     </div>
+    <!-- Card 1 -->
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <h5 class="card-title">Pantry Staples!</h5>
+        <p class="card-text">These are some items you may possibly have in your pantry already and may not need to purchase at the store.</p>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+      <div id="pantryStaples">
       </div>
     </div>
 <!-- Card 2 -->
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Condiments!</h5>
+    <p class="card-text">Check before you leave home to see if you need these common condiments:</p>
+  </div>
+  <div id="condiments">
+  </div>
+</div>
+<!-- Card 3 -->
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Meat Products!</h5>
+    <p class="card-text">Deli/Meat Aisle:</p>
+  </div>
+  <div id="weHaveTheMeats">
+  </div>
+</div>
+<!-- Card 4 -->
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">All Other Ingredients</h5>
+    <p class="card-text">This is everything else needed for your saved recipes:</p>
+  </div>
+  <div id="ingredientsListDumpsHere">
+  </div>
+</div>
 
   </div>
+  
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

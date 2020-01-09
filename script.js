@@ -19,19 +19,19 @@ function createRecipe() {
         for (i = 0; i < response.hits.length; i++) {
             var newDiv = $("#recipeReveal");
             newDiv.append("<div class='card' style='width: 18rem;'>")
-            .append("<div class='card-body'>")
-            .append("<h5>" + response.hits[i].recipe.label + "</h5>")
-            .append("<img src='" + response.hits[i].recipe.image + "' alt='Recipe Picture'></img>")
-            .append("<p class='card-text'>Full recipe instructions can be found at: <a href='" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.url + "</a></p>")
-            .append("</div>")
-            .append("<ul class='list-group list-group-flush'>");
+                .append("<div class='card-body'>")
+                .append("<h5>" + response.hits[i].recipe.label + "</h5>")
+                .append("<img src='" + response.hits[i].recipe.image + "' alt='Recipe Picture'></img>")
+                .append("<p class='card-text'>Full recipe instructions can be found at: <a href='" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.url + "</a></p>")
+                .append("</div>")
+                .append("<ul class='list-group list-group-flush'>");
             for (j = 0; j < response.hits[i].recipe.ingredients.length; j++) {
-            newDiv.append("<li class='list-group-item'>" + response.hits[i].recipe.ingredients[j].text + "</li>");
+                newDiv.append("<li class='list-group-item'>" + response.hits[i].recipe.ingredients[j].text + "</li>");
             }
             newDiv.append("</ul>")
-            .append("<div class='card-body'>")
-            .append("<button id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>")
-            .append("</div></div>");
+                .append("<div class='card-body'>")
+                .append("<button id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>")
+                .append("</div></div>");
         }
         queriedRecipe0 = (response.hits[0].recipe.uri);
         queriedRecipe1 = (response.hits[1].recipe.uri);
@@ -80,21 +80,21 @@ function saveRecipe(number) {
         } else if (number == 1) {
             localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe1));
         } else if (number == 2) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe2));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe2));
         } else if (number == 3) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe3));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe3));
         } else if (number == 4) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe4));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe4));
         } else if (number == 5) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe5));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe5));
         } else if (number == 6) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe6));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe6));
         } else if (number == 7) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe7));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe7));
         } else if (number == 8) {
-            localStorage.setItem("savedRecipes", currentResults +  JSON.stringify(queriedRecipe8));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe8));
         } else if (number == 9) {
-            localStorage.setItem("savedRecipes", currentResults  +  JSON.stringify(queriedRecipe9));
+            localStorage.setItem("savedRecipes", currentResults + JSON.stringify(queriedRecipe9));
         }
     }
 }
@@ -140,13 +140,29 @@ function groceryListReveal() {
     recipeBookStorage = recipeBookStorage.replace(/\,/g, "");
     recipeBookStorage = recipeBookStorage.split("http://www.edamam.com/ontologies/edamam.owl#recipe_");
 
-    for (i = 0; i < recipeBookStorage.length; i++) {
+    for (i = 1; i < recipeBookStorage.length; i++) {
         $.ajax({
             url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
             method: "GET"
         }).then(function (response) {
             for (j = 0; j < response[0].ingredients.length; j++) {
-                $('#ingredientsListDumpsHere').append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                if (response[0].ingredients[j].text.includes("salt") && response[0].ingredients[j].text.indexOf("salted") == -1) {
+                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                } else if (response[0].ingredients[j].text.includes("sugar") && response[0].ingredients[j].text.indexOf("sugared") == -1) {
+                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                }else if (response[0].ingredients[j].text.includes("oil") && response[0].ingredients[j].text.indexOf("oiled") == -1) {
+                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                }else if (response[0].ingredients[j].text.includes("vinegar") && response[0].ingredients[j].text.indexOf("vinegar-") == -1) {
+                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                }else if (response[0].ingredients[j].text.includes("sugar") || response[0].ingredients[j].text.includes("flour") || response[0].ingredients[j].text.includes("baking soda") || response[0].ingredients[j].text.includes("pure vanilla extract")) {
+                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                }else if (response[0].ingredients[j].text.includes("chicken") || response[0].ingredients[j].text.includes("turkey") || response[0].ingredients[j].text.includes("duck") || response[0].ingredients[j].text.includes("beef") || response[0].ingredients[j].text.includes("sausage") || response[0].ingredients[j].text.includes("venison") || response[0].ingredients[j].text.includes("lamb") || response[0].ingredients[j].text.includes("pork") || response[0].ingredients[j].text.includes("ham")) {
+                    $("#weHaveTheMeats").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                }else if (response[0].ingredients[j].text.includes("jelly") || response[0].ingredients[j].text.includes("jam") || response[0].ingredients[j].text.includes("preserves") || response[0].ingredients[j].text.includes("ketchup") || response[0].ingredients[j].text.includes("mayonnaise") || response[0].ingredients[j].text.includes("mustard") || response[0].ingredients[j].text.includes("hot sauce") || response[0].ingredients[j].text.includes("soy sauce") || response[0].ingredients[j].text.includes("sesame oil")){
+                    $("#condiments").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                } else {
+                    $('#ingredientsListDumpsHere').append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                }
             }
         })
     }
