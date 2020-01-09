@@ -17,11 +17,10 @@ function createRecipe() {
         method: "GET"
     }).then(function (response) {
         for (i = 0; i < response.hits.length; i++) {
-            console.log(response);
             var newDiv = $("#recipeReveal");
             newDiv.append("<div class='card' style='width: 18rem;'>")
             .append("<div class='card-body'>")
-            .append("<h5 class='" + response.hits[i].recipe.label + "'></h5>")
+            .append("<h5>" + response.hits[i].recipe.label + "</h5>")
             .append("<img src='" + response.hits[i].recipe.image + "' alt='Recipe Picture'></img>")
             .append("<p class='card-text'>Full recipe instructions can be found at: <a href='" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.url + "</a></p>")
             .append("</div>")
@@ -32,7 +31,6 @@ function createRecipe() {
             newDiv.append("</ul>")
             .append("<div class='card-body'>")
             .append("<button id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>")
-            .append("<a href='#'' class='card-link'>Another link</a>")
             .append("</div></div>");
         }
         queriedRecipe0 = (response.hits[0].recipe.uri);
@@ -48,7 +46,10 @@ function createRecipe() {
     })
 }
 
+//when Save Recipe Button is triggered it does this function, putting that recipe's uri into localStorage
 function saveRecipe(number) {
+    var newString = "#result" + (number + 1).toString();
+    $(newString).html("Recipe Saved!");
     if (localStorage.getItem("savedRecipes") == null) {
         if (number == 0) {
             localStorage.setItem("savedRecipes", JSON.stringify(queriedRecipe0));
@@ -98,6 +99,7 @@ function saveRecipe(number) {
     }
 }
 
+//This function uses localStorage values to create the saved recipes on Recipe Book page
 function recipeBookReveal() {
     var recipeBookStorage = localStorage.getItem("savedRecipes");
     recipeBookStorage = recipeBookStorage.replace(/\"/g, "");
@@ -109,26 +111,29 @@ function recipeBookReveal() {
             url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
             method: "GET"
         }).then(function (response) {
-            $(".card").append("<p>" + response[0].label + "</p>")
-                .append("<img src=" + response[0].image + " alt='Recipe picture'>")
-                .append("<p>" + response[0].url + "</p>");
+            var newClass = response[0].uri.replace("http://www.edamam.com/ontologies/edamam.owl#recipe_", "");
+            $(".card").append("<p class='" + newClass + "'>" + response[0].label + "</p>")
+                .append("<img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'>")
+                .append("<p>Full recipe may be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p>");
+
             for (j = 0; j < response[0].ingredients.length; j++) {
-                $('.card').append("<p>" + response[0].ingredients[j].text + "</p>");
+                $('.card').append("<p class='" + newClass + "'>" + response[0].ingredients[j].text + "</p>");
             }
-            $(".card").append("<button onclick='removeRecipe()'>Remove above recipe from Recipe Book</button>");
+            $(".card").append("<button id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>");
         })
     }
 }
 
+//this function removes a recipe from localStorage
 function removeRecipe() {
-    console.log("This button doesn't work yet!");
-    
-    // var tweakThis = localStorage.getItem("savedRecipes");
-    // tweakThis.replace("http://www.edamam.com/ontologies/edamam.owl#recipe_" + address, '');
-    // $("#savedRecipesDumpHere").empty();
-    // recipeBookReveal();
+    var removeString = "\"" + "http://www.edamam.com/ontologies/edamam.owl#recipe_" + event.srcElement.id + "\"";
+    var tweakThis = String(localStorage.getItem("savedRecipes"));
+    tweakThis = tweakThis.replace(removeString, '');
+    localStorage.setItem("savedRecipes", tweakThis);
+    document.getElementById(event.srcElement.id).innerHTML = "Recipe is now removed from saved recipes";
 }
 
+//This function creates all of the ingredients in one big grocery list
 function groceryListReveal() {
     var recipeBookStorage = localStorage.getItem("savedRecipes");
     recipeBookStorage = recipeBookStorage.replace(/\"/g, "");
@@ -145,5 +150,4 @@ function groceryListReveal() {
             }
         })
     }
-    //put function to put all ingredients into grocery list
 }
