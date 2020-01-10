@@ -108,7 +108,7 @@ function recipeBookReveal() {
 
     for (i = 0; i < recipeBookStorage.length; i++) {
         $.ajax({
-            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
+            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=667fec46&app_key=b749128ae636e3dc86732633a8c0a0af",
             method: "GET"
         }).then(function (response) {
             var newClass = response[0].uri.replace("http://www.edamam.com/ontologies/edamam.owl#recipe_", "");
@@ -142,7 +142,7 @@ function groceryListReveal() {
 
     for (i = 1; i < recipeBookStorage.length; i++) {
         $.ajax({
-            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
+            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=917da0f4&app_key=c3882b283afbea6c3d0069fbd8a86427",
             method: "GET"
         }).then(function (response) {
             for (j = 0; j < response[0].ingredients.length; j++) {
