@@ -166,4 +166,11 @@ function groceryListReveal() {
             }
         })
     }
-}
+} 
+
+$('body').on("click", '.form-check-input', function(){
+    if (this.checked) {
+        console.log("It worked!");
+        $( this ).parent().appendTo($("#checkedIngredients"));
+    }
+}) 
