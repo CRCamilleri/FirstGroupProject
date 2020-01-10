@@ -147,23 +147,29 @@ function groceryListReveal() {
         }).then(function (response) {
             for (j = 0; j < response[0].ingredients.length; j++) {
                 if (response[0].ingredients[j].text.includes("salt") && response[0].ingredients[j].text.indexOf("salted") == -1) {
-                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 } else if (response[0].ingredients[j].text.includes("sugar") && response[0].ingredients[j].text.indexOf("sugared") == -1) {
-                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 }else if (response[0].ingredients[j].text.includes("oil") && response[0].ingredients[j].text.indexOf("oiled") == -1) {
-                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 }else if (response[0].ingredients[j].text.includes("vinegar") && response[0].ingredients[j].text.indexOf("vinegar-") == -1) {
-                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 }else if (response[0].ingredients[j].text.includes("sugar") || response[0].ingredients[j].text.includes("flour") || response[0].ingredients[j].text.includes("baking soda") || response[0].ingredients[j].text.includes("pure vanilla extract")) {
-                    $("#pantryStaples").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 }else if (response[0].ingredients[j].text.includes("chicken") || response[0].ingredients[j].text.includes("turkey") || response[0].ingredients[j].text.includes("duck") || response[0].ingredients[j].text.includes("beef") || response[0].ingredients[j].text.includes("sausage") || response[0].ingredients[j].text.includes("venison") || response[0].ingredients[j].text.includes("lamb") || response[0].ingredients[j].text.includes("pork") || response[0].ingredients[j].text.includes("ham")) {
-                    $("#weHaveTheMeats").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#weHaveTheMeats").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 }else if (response[0].ingredients[j].text.includes("jelly") || response[0].ingredients[j].text.includes("jam") || response[0].ingredients[j].text.includes("preserves") || response[0].ingredients[j].text.includes("ketchup") || response[0].ingredients[j].text.includes("mayonnaise") || response[0].ingredients[j].text.includes("mustard") || response[0].ingredients[j].text.includes("hot sauce") || response[0].ingredients[j].text.includes("soy sauce") || response[0].ingredients[j].text.includes("sesame oil")){
-                    $("#condiments").append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $("#condiments").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 } else {
-                    $('#ingredientsListDumpsHere').append("<p>" + response[0].ingredients[j].text + " (" + response[0].label + ")</p>");
+                    $('#ingredientsListDumpsHere').append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 }
             }
         })
     }
-}
+} 
+
+$('body').on("click", '.form-check-input', function(){
+    if (this.checked) {
+        $( this ).parent().appendTo($("#checkedIngredients"));
+    }
+}) 
