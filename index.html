@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -19,45 +20,44 @@
     <title>Let's Cook!</title>
 </head>
 
-<body>
-    <div class="container p-3 mb-2 bg-gradient-warning text-dark">
+<body >
+    <div  class="container p-3 mb-2 bg-gradient-warning text-dark">
         <div class="row justify-content-lg-center">
 
             <div class="col-lg-8 text-left">
-                <h3>Let's Start Cooking</h3>
+                <h3 class="header">Let's Start Cooking</h3>
+          
             </div>
-            <div class="col-lg-2 text-right">
-                <div class="nav-item active">
-                    <a class="btn btn-outline-primary nav-link" href="RecipeBook.html">Recipe Book <span
-                            class="sr-only">(current)</span></a>
-                </div>
+            <div class="nav-item active col-lg-2">
+                <a class="btn btn-secondary nav-link" href="index.html">Home <span
+                        class="sr-only">(current)</span></a>
             </div>
-            <div class="col-lg-2 text-right">
-                <div class="nav-item active">
-                    <a class="btn btn-outline-primary nav-link" href="List.html">Grocery List/Map<span
-                            class="sr-only">(current)</span></a>
-                </div>
+            <div class="nav-item active col-lg-2">
+                <a class="btn btn-secondary nav-link" href="RecipeBook.html">Recipe Book <span
+                        class="sr-only">(current)</span></a>
+            </div>
+            <div class="nav-item active col-lg-2">
+                <a class="btn btn-secondary nav-link" href="List.html">Grocery List/Map <span
+                        class="sr-only">(current)</span></a>
             </div>
         </div>
         <div class="row justify-content-lg-center">
 
-            <div class="col-lg-8 text-left">
+            <div class="col-lg text-left">
                 <p class="text-secondary">First, search for your favorite recipe</p>
             </div>
-            <div class="col col-lg-4">
-            </div>
-        </div>
+              </div>
         <div class="row justify-content-lg-center">
-            <div class="col col-lg-2">
+            <div class="col col-lg">
             </div>
             <!-- Search form -->
             <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="recipeInput">
-            <div class="col col-lg-2">
+            <div class="col col-lg">
             </div>
         </div>
         <br>
         <div class="row justify-content-lg-left">
-            <button type="button" class="btn btn-outline-primary" onclick="createRecipe()">Find Recipes</button>
+            <button type="button" class="btn btn-secondary" onclick="createRecipe()">Find Recipes</button>
         </div>
 
     </div>
