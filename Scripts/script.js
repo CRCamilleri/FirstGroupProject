@@ -130,7 +130,7 @@ function recipeBookReveal() {
                 }
             };
 
-            $("#savedRecipesDumpHere").append("<div class='card col-lg-4 col-md-5 col-sm-10 justify-content-center' style=''><h5 class='card-title text-center'" + newClass + ">" + response[0].label + "</h5><img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'><p class='card-text'>Full recipe instructions can be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p><div></div><ul class='list-group-flush'>" + dynamic1 + "</ul><button class='btn btn-warning mt-auto' id='id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>" + "</div>")
+            $("#savedRecipesDumpHere").append("<div class='card col-lg-4 col-md-5 col-sm-10 justify-content-center' style=''><h5 class='card-title text-center'" + newClass + ">" + response[0].label + "</h5><img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'><p class='card-text'>Full recipe instructions can be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p><div></div><ul class='list-group-flush'>" + dynamic1 + "</ul><button class='btn btn-warning mt-auto' id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>" + "</div>")
 
             // ("<p class='" + newClass + "'>" + response[0].label + "</p>")
             // .append("<img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'>")
@@ -170,7 +170,7 @@ function groceryListReveal() {
         }).then(function(response) {
             for (j = 0; j < response[0].ingredients.length; j++) {
                 if (response[0].ingredients[j].text.includes("salt") && response[0].ingredients[j].text.indexOf("salted") == -1) {
-                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
+                    $("#pantryStaples").append("<ul class='list-group-flush'><div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div></ul>");
                 } else if (response[0].ingredients[j].text.includes("sugar") && response[0].ingredients[j].text.indexOf("sugared") == -1) {
                     $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 } else if (response[0].ingredients[j].text.includes("oil") && response[0].ingredients[j].text.indexOf("oiled") == -1) {
