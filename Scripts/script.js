@@ -10,7 +10,6 @@ var queriedRecipe8 = [];
 var queriedRecipe9 = [];
 
 //On Index page this function takes search bar input and gives ten results for recipes
-// document.getElementById("generate").addEventListener("click");
 
 $("#generate").click(function() {
     var mealName = $("#recipeInput").val().trim();
@@ -29,19 +28,6 @@ $("#generate").click(function() {
             };
 
             newDiv.append("<div class='card col-lg-4 col-md-5 col-sm-10 justify-content-center' style=''><h5 class='card-title text-center'>" + response.hits[i].recipe.label + "</h5><img class='card-img-top' src='" + response.hits[i].recipe.image + "' alt='Recipe Picture'></img><p class='card-text'>Full recipe instructions can be found at: <a href='" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.url + "</a></p><div></div><ul class='list-group-flush'>" + dynamic + "</ul><button class='btn btn-warning mt-auto' id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button></div>")
-                //     .append("<div class='card-body'>")
-                //     .append("<h5>" + response.hits[i].recipe.label + "</h5>")
-                //     .append("<img class='card-img-top' src='" + response.hits[i].recipe.image + "' alt='Recipe Picture'></img>")
-                //     .append("<p class='card-text'>Full recipe instructions can be found at: <a href='" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.url + "</a></p>")
-                //     .append("</div>") 
-                //     .append("<ul class='list-group list-group-flush'>");
-                // for (j = 0; j < response.hits[i].recipe.ingredients.length; j++) {
-                //     newDiv.append("<li class='list-group-item'>" + response.hits[i].recipe.ingredients[j].text + "</li>");
-                // }
-                // newDiv.append("</ul>")
-                //     .append("<div class='card-body'>")
-                //     .append("<button id='result" + (i + 1) + "' onclick='saveRecipe(" + (i) + ")'>Save Recipe</button>")
-                //     .append("</div></div>");
         }
         queriedRecipe0 = (response.hits[0].recipe.uri);
         queriedRecipe1 = (response.hits[1].recipe.uri);
@@ -131,17 +117,6 @@ function recipeBookReveal() {
             };
 
             $("#savedRecipesDumpHere").append("<div class='card col-lg-4 col-md-5 col-sm-10 justify-content-center' style=''><h5 class='card-title text-center'" + newClass + ">" + response[0].label + "</h5><img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'><p class='card-text'>Full recipe instructions can be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p><div></div><ul class='list-group-flush'>" + dynamic1 + "</ul><button class='btn btn-warning mt-auto' id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>" + "</div>")
-
-            // ("<p class='" + newClass + "'>" + response[0].label + "</p>")
-            // .append("<img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'>")
-            //     .append("<p>Full recipe may be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p>");
-
-            // for (j = 0; j < response[0].ingredients.length; j++) {
-            //     $('.card').append("<p class='" + newClass + "'>" + response[0].ingredients[j].text + "</p>");
-            // }
-            // $(".card").append("<button id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>");
-
-
         })
 
     }
@@ -170,7 +145,7 @@ function groceryListReveal() {
         }).then(function(response) {
             for (j = 0; j < response[0].ingredients.length; j++) {
                 if (response[0].ingredients[j].text.includes("salt") && response[0].ingredients[j].text.indexOf("salted") == -1) {
-                    $("#pantryStaples").append("<ul class='list-group-flush'><div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div></ul>");
+                    $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 } else if (response[0].ingredients[j].text.includes("sugar") && response[0].ingredients[j].text.indexOf("sugared") == -1) {
                     $("#pantryStaples").append("<div class='form-check'><input type='checkbox' class='form-check-input' id='materialUnchecked'><label class='form-check-label' for='materialUnchecked'>" + response[0].ingredients[j].text + " (" + response[0].label + ")</label></div>");
                 } else if (response[0].ingredients[j].text.includes("oil") && response[0].ingredients[j].text.indexOf("oiled") == -1) {
