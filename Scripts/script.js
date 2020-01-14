@@ -10,7 +10,9 @@ var queriedRecipe8 = [];
 var queriedRecipe9 = [];
 
 //On Index page this function takes search bar input and gives ten results for recipes
-function createRecipe() {
+// document.getElementById("generate").addEventListener("click");
+
+$("#generate").click(function() {
     var mealName = $("#recipeInput").val().trim();
     $.ajax({
         url: "https://api.edamam.com/search?q=" + mealName + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
@@ -52,7 +54,7 @@ function createRecipe() {
         queriedRecipe8 = (response.hits[8].recipe.uri);
         queriedRecipe9 = (response.hits[9].recipe.uri);
     })
-}
+});
 
 //when Save Recipe Button is triggered it does this function, putting that recipe's uri into localStorage
 function saveRecipe(number) {
@@ -115,19 +117,33 @@ function recipeBookReveal() {
 
     for (i = 0; i < recipeBookStorage.length; i++) {
         $.ajax({
-            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=667fec46&app_key=b749128ae636e3dc86732633a8c0a0af",
+            url: "https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_" + recipeBookStorage[i] + "&app_id=917da0f4&app_key=c3882b283afbea6c3d0069fbd8a86427",
             method: "GET"
         }).then(function(response) {
             var newClass = response[0].uri.replace("http://www.edamam.com/ontologies/edamam.owl#recipe_", "");
-            $(".card").append("<p class='" + newClass + "'>" + response[0].label + "</p>")
-                .append("<img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'>")
-                .append("<p>Full recipe may be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p>");
 
+            var dynamic1 = "";
             for (j = 0; j < response[0].ingredients.length; j++) {
-                $('.card').append("<p class='" + newClass + "'>" + response[0].ingredients[j].text + "</p>");
-            }
-            $(".card").append("<button id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>");
+                dynamic1 += "<li class='list-group-item'" + newClass + "'>" + response[0].ingredients[j].text + "</li>"
+                if (j === 4) {
+                    break
+                }
+            };
+
+            $("#savedRecipesDumpHere").append("<div class='card col-lg-4 col-md-5 col-sm-10 justify-content-center' style=''><h5 class='card-title text-center'" + newClass + ">" + response[0].label + "</h5><img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'><p class='card-text'>Full recipe instructions can be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p><div></div><ul class='list-group-flush'>" + dynamic1 + "</ul><button class='btn btn-warning mt-auto' id='id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>" + "</div>")
+
+            // ("<p class='" + newClass + "'>" + response[0].label + "</p>")
+            // .append("<img class='" + newClass + "' src=" + response[0].image + " alt='Recipe picture'>")
+            //     .append("<p>Full recipe may be found at: <a class='" + newClass + "' href=" + response[0].url + ">" + response[0].url + "</a></p>");
+
+            // for (j = 0; j < response[0].ingredients.length; j++) {
+            //     $('.card').append("<p class='" + newClass + "'>" + response[0].ingredients[j].text + "</p>");
+            // }
+            // $(".card").append("<button id='" + newClass + "' onclick=removeRecipe()>Remove above recipe from Recipe Book</button>");
+
+
         })
+
     }
 }
 
