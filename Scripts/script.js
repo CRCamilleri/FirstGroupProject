@@ -12,6 +12,7 @@ var queriedRecipe9 = [];
 //On Index page this function takes search bar input and gives ten results for recipes
 
 $("#generate").click(function() {
+    $("#recipeReveal").empty();
     var mealName = $("#recipeInput").val().trim();
     $.ajax({
         url: "https://api.edamam.com/search?q=" + mealName + "&app_id=70e00e26&app_key=6c683b56a399b435d00ee3100c0ca055",
