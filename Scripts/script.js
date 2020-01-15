@@ -24,7 +24,8 @@ $("#generate").click(function() {
             for (j = 0; j < response.hits[i].recipe.ingredients.length; j++) {
                 dynamic += "<li class='list-group-item'>" + response.hits[i].recipe.ingredients[j].text + "</li>"
                 if (j === 4) {
-                    break
+                    dynamic += "<p>...";
+                    break;
                 }
             };
 
