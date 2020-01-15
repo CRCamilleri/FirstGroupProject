@@ -2,134 +2,112 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="Style/Style.css">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-  <title>Shopping List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="Style/Style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>Shopping List</title>
 
 </head>
 
 <body class="peach-gradient color-block" onload="groceryListReveal()">
-  <div class="container p-3 mb-2 bg-gradient-warning text-dark">
-    <div class="row justify-content-lg-center">
+    <div class="container p-3 mb-2 bg-gradient-warning text-dark">
+        <div class="row justify-content-lg-center">
 
-      <div class="col-lg-6 text-left">
-        <h1 class="header">Let's Start Cooking</h1>
+            <div class="col-lg-6 text-left">
+                <h1 class="header">Let's Start Cooking</h1>
 
-      </div>
-      <div class="nav-item active col-lg-2">
-        <a class="btn btn-secondary nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-      </div>
-      <div class="nav-item active col-lg-2">
-        <a class="btn btn-secondary nav-link" href="RecipeBook.html">Recipe Book <span
+            </div>
+            <div class="nav-item active col-lg-2">
+                <a class="btn btn-secondary nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </div>
+            <div class="nav-item active col-lg-2">
+                <a class="btn btn-secondary nav-link" href="RecipeBook.html">Recipe Book <span
             class="sr-only">(current)</span></a>
-      </div>
-      <div class="nav-item active col-lg-2">
-        <a class="btn btn-secondary nav-link" href="List.html">Grocery List/Map <span
+            </div>
+            <div class="nav-item active col-lg-2">
+                <a class="btn btn-secondary nav-link" href="List.html">Grocery List/Map <span
             class="sr-only">(current)</span></a>
-      </div>
+            </div>
+        </div>
+        <div class="row justify-content-lg-center">
+            <div class="col-lg text-left">
+                <h5 class="subheader">Third, find a store and shop</h5>
+            </div>
+        </div>
     </div>
-    <div class="row justify-content-lg-center">
-      <div class="col-lg text-left">
-        <h5 class="subheader">Third, find a store and shop</h5>
-      </div>
-    </div>
-  </div>
-  <br>
+    <br>
 
-  <div class="container col-10">
+    <div class="container col-10">
 
-    <iframe width="100%" height="300px" style="border:0"
-      src="https://www.google.com/maps/embed/v1/search?q=Grocery%20Stores&key=AIzaSyAOfk4ehMP4zjqOpNse3IKT4EA6MJo3cX4"
-      allowfullscreen></iframe>
-  </div>
+        <iframe width="100%" height="300px" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Grocery%20Stores&key=AIzaSyAOfk4ehMP4zjqOpNse3IKT4EA6MJo3cX4" allowfullscreen></iframe>
+    </div>
 
-  <div class="container">
-    <div class="row">
-    <div class="col-lg-4 col-md-3 col-sm-2"></div>
-    <div class="col-lg-4 col-md-6 col-sm-8">
+    <div class="row justify-content-center">
 
-  <!-- Card 1 -->
+        <!-- Card 1 -->
 
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Pantry Staples!</h5>
-      <p class="card-text">Here are pantry staples you may already have:</p>
-    </div>
-    <div id="pantryStaples">
-    </div>
-  </div>
-  <!-- Card 2 -->
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Condiments!</h5>
-      <p class="card-text">Check before you leave home to see if you need these common condiments:</p>
-    </div>
-    <div id="condiments">
-    </div>
-  </div>
-  <!-- Card 3 -->
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Meat Products!</h5>
-      <p class="card-text">Deli/Meat Aisle:</p>
-    </div>
-    <div id="weHaveTheMeats">
-    </div>
-  </div>
-  <!-- Card 4 -->
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">All Other Ingredients</h5>
-      <p class="card-text">This is everything else needed for your saved recipes:</p>
-    </div>
-    <div id="ingredientsListDumpsHere">
-    </div>
-  </div>
-  <!-- Card 5 -->
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">All checked items</h5>
-      <p class="card-text">All checked items will conveniently shift here. You can keep shopping for items above:</p>
-    </div>
-    <div id="checkedIngredients">
-    </div>
-  </div>
+        <div class="card col-lg-4 col-md-5 col-sm-10 justify-content-center">
+            <div class="card-body">
+                <h5 class="card-title text-center">Pantry Staples!</h5>
+                <p class="card-text">Here are pantry staples you may already have:</p>
+            </div>
+            <div id="pantryStaples">
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card col-lg-4 col-md-5 col-sm-10 justify-content-center">
+            <div class="card-body">
+                <h5 class="card-title text-center">Condiments!</h5>
+                <p class="card-text">Check before you leave home to see if you need these common condiments:</p>
+            </div>
+            <div id="condiments">
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card col-lg-4 col-md-5 col-sm-10 justify-content-center">
+            <div class="card-body">
+                <h5 class="card-title text-center">Meat Products!</h5>
+                <p class="card-text">Deli/Meat Aisle:</p>
+            </div>
+            <div id="weHaveTheMeats">
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card col-lg-4 col-md-5 col-sm-10 justify-content-center">
+            <div class="card-body">
+                <h5 class="card-title text-center">All Other Ingredients</h5>
+                <p class="card-text">This is everything else needed for your saved recipes:</p>
+            </div>
+            <div id="ingredientsListDumpsHere">
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card col-lg-4 col-md-5 col-sm-10 justify-content-center">
+            <div class="card-body">
+                <h5 class="card-title text-center">All checked items</h5>
+                <p class="card-text">All checked items will conveniently shift here. You can keep shopping for items above:</p>
+            </div>
+            <div id="checkedIngredients">
+            </div>
+        </div>
 
 
-</div>
-<div class="col-lg-4 col-md-3 col-sm-2"></div>
-</div>
-</div>
+    </div>
+    </div>
 
-  </div>
+    </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="Scripts/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="Scripts/script.js"></script>
 
 
 </body>
